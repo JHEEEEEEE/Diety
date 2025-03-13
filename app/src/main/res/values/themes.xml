@@ -2,4 +2,12 @@
 <resources>
 
     <style name="Theme.Diety" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Diety.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground"> @color/white </item>
+        <item name="windowSplashScreenAnimatedIcon"> @drawable/logo </item>
+        <item name="windowSplashScreenAnimationDuration"> 2000 </item>
+        <item name="android:windowNoTitle"> true </item>
+    </style>
+
 </resources>

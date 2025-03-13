@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "266299301043",
+    "project_id": "diety-4279f",
+    "storage_bucket": "diety-4279f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266299301043:android:d6fd39fa95b54b9aab64c6",
+        "android_client_info": {
+          "package_name": "com.effort.diety"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSzgrfNmQc-q-PQjOj1Xdtdlu4WOeK7_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
