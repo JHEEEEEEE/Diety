@@ -1,4 +1,4 @@
-package com.effort.diety.core.common
+package com.effort.diety.presentation.util
 
 import com.effort.diety.presentation.UiState
 import kotlinx.coroutines.CoroutineScope

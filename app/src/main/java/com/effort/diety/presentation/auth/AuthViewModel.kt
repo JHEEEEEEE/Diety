@@ -2,7 +2,7 @@ package com.effort.diety.presentation.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.effort.diety.core.common.handleAuthResult
+import com.effort.diety.presentation.util.handleAuthResult
 import com.effort.diety.data.repository.FirebaseRepository
 import com.effort.diety.presentation.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel

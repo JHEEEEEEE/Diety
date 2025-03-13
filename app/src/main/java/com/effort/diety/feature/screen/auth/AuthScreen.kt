@@ -1,4 +1,4 @@
-package com.effort.diety.feature.auth.screen
+package com.effort.diety.feature.screen.auth
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.effort.diety.R
-import com.effort.diety.feature.components.CustomButton
-import com.effort.diety.feature.components.CustomTextField
+import com.effort.diety.feature.util.CustomButton
+import com.effort.diety.feature.util.CustomTextField
 import com.effort.diety.presentation.UiState
 import com.effort.diety.presentation.auth.AuthViewModel
 import com.effort.diety.ui.theme.DietyTheme

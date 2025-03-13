@@ -1,4 +1,4 @@
-package com.effort.diety.feature.components
+package com.effort.diety.feature.util
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

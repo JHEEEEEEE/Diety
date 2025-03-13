@@ -1,14 +1,10 @@
-package com.effort.diety
+package com.effort.diety.feature
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.ui.Modifier
+import com.effort.diety.feature.screen.main.MainScreen
 import com.effort.diety.ui.theme.DietyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,9 +15,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DietyTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Text(text= "MainActivity", modifier = Modifier.padding(innerPadding))
-                }
+                MainScreen()
             }
         }
     }
