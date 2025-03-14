@@ -25,16 +25,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.effort.diety.R
-import com.effort.diety.feature.util.CustomButton
-import com.effort.diety.feature.util.CustomTextField
+import com.effort.diety.feature.screen.common.CustomButton
+import com.effort.diety.feature.screen.common.CustomTextField
 import com.effort.diety.presentation.UiState
 import com.effort.diety.presentation.auth.AuthViewModel
-import com.effort.diety.ui.theme.DietyTheme
 
 @Composable
 fun AuthUi(
@@ -183,13 +181,5 @@ fun AuthForm(
             contentColor = Color.Black,
             enabled = signUpState !is UiState.Loading
         )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewAuthUi() {
-    DietyTheme {
-
     }
 }

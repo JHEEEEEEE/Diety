@@ -1,4 +1,4 @@
-package com.effort.diety.feature.navigation
+package com.effort.diety.feature.screen.navigation
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.effort.diety.feature.model.NavigationTab
 
 @Composable
 fun MainNavigation(

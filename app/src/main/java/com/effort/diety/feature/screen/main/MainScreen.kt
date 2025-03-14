@@ -15,8 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.effort.diety.feature.navigation.MainNavigation
-import com.effort.diety.feature.navigation.NavigationTab
+import com.effort.diety.feature.screen.navigation.MainNavigation
+import com.effort.diety.feature.model.NavigationTab
 import com.effort.diety.feature.screen.diet.DietScreen
 import com.effort.diety.feature.screen.home.HomeScreen
 import com.effort.diety.feature.screen.profile.ProfileScreen
@@ -26,7 +26,6 @@ fun MainScreen() {
     var currentScreen by remember { mutableStateOf(NavigationTab.Home) }
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        //Text(text = "MainActivity", modifier = Modifier.padding(innerPadding))
 
         Column(
             modifier = Modifier
