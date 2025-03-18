@@ -27,6 +27,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.effort.diety.R
 import com.effort.diety.feature.screen.common.CustomButton
@@ -36,8 +37,8 @@ import com.effort.diety.presentation.auth.AuthViewModel
 
 @Composable
 fun AuthUi(
-    authViewModel: AuthViewModel,
-    startMainActivity: () -> Unit
+    authViewModel: AuthViewModel = hiltViewModel(),
+    startMainActivity: () -> Unit,
 ) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
@@ -49,7 +50,6 @@ fun AuthUi(
                 startMainActivity()
             }
         }
-
         AuthContent(
             paddingValues = innerPadding,
             signUpState = signUpState,

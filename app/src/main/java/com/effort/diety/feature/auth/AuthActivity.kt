@@ -5,18 +5,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.effort.diety.feature.MainActivity
 import com.effort.diety.feature.screen.auth.AuthUi
-import com.effort.diety.presentation.auth.AuthViewModel
 import com.effort.diety.ui.theme.DietyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AuthActivity : ComponentActivity() {
-
-    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +22,7 @@ class AuthActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DietyTheme {
-                AuthUi(
-                    authViewModel,
-                    startMainActivity = { startMainActivity() }
-                )
+                AuthUi(startMainActivity = { startMainActivity() })
             }
         }
     }

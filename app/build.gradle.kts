@@ -77,6 +77,7 @@ dependencies {
         implementation(platform(libs.firebase.bom))
         implementation(libs.firebase.auth.ktx)
         implementation(libs.firebase.analytics)
+        implementation(libs.firebase.firestore)
 
         // Lifecycle
         implementation(libs.lifecycle.runtime.compose)
@@ -84,5 +85,7 @@ dependencies {
         // hilt
         implementation(libs.hilt.android)
         ksp(libs.hilt.compiler)
+
+        implementation(libs.hilt.navigation.compose)
     }
 }

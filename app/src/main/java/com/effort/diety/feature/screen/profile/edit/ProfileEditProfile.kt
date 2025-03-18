@@ -1,5 +1,6 @@
 package com.effort.diety.feature.screen.profile.edit
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,6 +35,8 @@ fun ProfileEditScreen(
     onSaveClicked: (String, String, String) -> Unit,
     onCancelClicked: () -> Unit
 ) {
+
+    val context = LocalContext.current
 
     var name by remember { mutableStateOf(initialName) }
     var age by remember { mutableStateOf(initialAge) }
@@ -75,7 +79,18 @@ fun ProfileEditScreen(
 
             CustomGradientButton(
                 text = "저장",
-                onClick = { onSaveClicked(name, age, height) },
+                onClick = {
+
+                    if (name.isNotBlank() && age.all { it.isDigit() } && height.all { it.isDigit() }) {
+
+                    onSaveClicked(name, age, height)
+
+                    } else {
+                        Toast.makeText(context,
+                            "이름은 문자열, 나이와 키는 숫자여야 합니다."
+                        ,Toast.LENGTH_SHORT).show()
+                    }
+                },
                 gradientColors = listOf(Color(0xFF6A1B9A), Color(0XFFAB47BC))
             )
         }
