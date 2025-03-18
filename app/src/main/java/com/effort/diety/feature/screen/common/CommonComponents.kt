@@ -1,5 +1,6 @@
 package com.effort.diety.feature.screen.common
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -24,12 +25,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -138,6 +144,43 @@ fun CustomGradientButton(
             color = Color.White,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold
+        )
+    }
+}
+
+
+@Composable
+fun CircularProgressBar(
+    progress: Float,
+    modifier: Modifier,
+    strokeWidth: Dp,
+    color: Color = Color.Blue,
+    backgroundColor : Color = Color.LightGray
+) {
+
+    Canvas(modifier = modifier){
+
+        val size = size.minDimension
+        val radius = size / 2f
+        val center = Offset(size / 2f, size / 2f)
+        val startAngle = -90f
+        val strokeWidthPx = strokeWidth.toPx()
+
+        drawCircle(
+            color = backgroundColor,
+            radius = radius - strokeWidthPx / 2,
+            center = center,
+            style = Stroke(width = strokeWidthPx)
+        )
+
+        drawArc(
+            color = color,
+            startAngle = startAngle,
+            sweepAngle = progress * 360,
+            useCenter = false,
+            topLeft = Offset(strokeWidthPx / 2, strokeWidthPx / 2),
+            size = Size(size - strokeWidthPx, size - strokeWidthPx),
+            style = Stroke(width = strokeWidthPx, cap = StrokeCap.Round)
         )
     }
 }

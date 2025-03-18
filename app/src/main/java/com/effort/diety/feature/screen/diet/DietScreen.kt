@@ -1,26 +1,40 @@
 package com.effort.diety.feature.screen.diet
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import com.effort.diety.feature.model.DietDetailScreen.DietRecordAdd
+import com.effort.diety.feature.model.DietDetailScreen.DietRecordList
+import com.effort.diety.feature.screen.diet.list.DietListScreen
+import com.effort.diety.feature.screen.diet.record.DietRecordScreen
 
 @Composable
 fun DietScreen() {
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "DIET",
-            fontSize = 30.sp,
-            color = Color.Blue
-        )
+    var currentScreen by rememberSaveable { mutableStateOf(DietRecordList) }
+
+    when (currentScreen) {
+
+        DietRecordList -> {
+            DietListScreen(
+                onAddClicked = {
+                    currentScreen = DietRecordAdd
+                }
+            )
+        }
+
+        DietRecordAdd -> {
+            DietRecordScreen(
+                onSaveClicked = {
+                    currentScreen = DietRecordList
+                },
+
+                onCancelClicked = {
+                    currentScreen = DietRecordList
+                }
+            )
+        }
     }
 }
