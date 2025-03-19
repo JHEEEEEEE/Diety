@@ -1,5 +1,6 @@
 package com.effort.diety.feature.screen.diet.list
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,9 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.effort.diety.feature.diet.DietRecordInfoActivity
 
 @Composable
 fun DietListScreen(
@@ -127,11 +130,25 @@ fun DietExerciseList(exerciseRecordState: UiState<List<Exercise>>) {
 
 @Composable
 fun ExerciseRow(exercise: Exercise) {
+
+    val context = LocalContext.current
+
     Row(
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth()
             .background(Color(0xFF500371), shape = RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(10.dp))
+            .clickable {
+                val intent = Intent(context, DietRecordInfoActivity::class.java)
+
+                intent.putExtra("docId", exercise.docId)
+                intent.putExtra("name", exercise.name)
+                intent.putExtra("duration", exercise.duration.toString())
+                intent.putExtra("calories", exercise.calories.toString())
+
+                context.startActivity(intent)
+            }
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically

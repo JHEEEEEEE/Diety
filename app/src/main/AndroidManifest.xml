@@ -32,6 +32,10 @@
             </intent-filter>
 
         </activity>
+
+        <activity android:name=".feature.diet.DietRecordInfoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Diety"/>
     </application>
 
 </manifest>
