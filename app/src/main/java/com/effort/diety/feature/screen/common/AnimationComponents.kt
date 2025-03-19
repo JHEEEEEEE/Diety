@@ -44,10 +44,10 @@ fun AnimatedCircularProgressBar(
 
     val animatedProgress = remember { Animatable(0f) }
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(burnedCalories) {
         animatedProgress.animateTo(
-            targetValue = burnedCalories.toFloat() / targetCalories,
-            animationSpec = tween(durationMillis = 2000)
+            targetValue = if (targetCalories > 0) burnedCalories.toFloat() / targetCalories else 0f,
+            animationSpec = tween(durationMillis = 1000)
         )
     }
 

@@ -2,8 +2,8 @@ package com.effort.diety.presentation.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.effort.diety.data.repository.AuthRepository
 import com.effort.diety.presentation.util.handleAuthResult
-import com.effort.diety.data.repository.FirebaseRepository
 import com.effort.diety.presentation.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val firebaseRepository: FirebaseRepository
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     // 회원가입 상태 관리
@@ -27,7 +27,7 @@ class AuthViewModel @Inject constructor(
     fun signUp(email: String, password: String) {
         handleAuthResult(
             stateFlow = _signUpState,
-            authAction = { firebaseRepository.signUp(email, password) },
+            authAction = { authRepository.signUp(email, password) },
             errorMessage = "회원가입 실패",
             coroutineScope = viewModelScope
         )
@@ -37,7 +37,7 @@ class AuthViewModel @Inject constructor(
     fun signIn(email: String, password: String) {
         handleAuthResult(
             stateFlow = _signInState,
-            authAction = { firebaseRepository.signIn(email, password) },
+            authAction = { authRepository.signIn(email, password) },
             errorMessage = "로그인 실패",
             coroutineScope = viewModelScope
         )

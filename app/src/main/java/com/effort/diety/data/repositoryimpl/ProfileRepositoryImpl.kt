@@ -1,28 +1,16 @@
 package com.effort.diety.data.repositoryimpl
 
-import com.effort.diety.data.repository.FirebaseRepository
+import com.effort.diety.data.repository.ProfileRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-class FirebaseRepositoryImpl @Inject constructor(
+class ProfileRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore
-) : FirebaseRepository {
-
-    // 회원가입
-    override suspend fun signUp(email: String, password: String): FirebaseUser? {
-        val result = auth.createUserWithEmailAndPassword(email, password).await()
-        return result.user
-    }
-
-    // 로그인
-    override suspend fun signIn(email: String, password: String): FirebaseUser? {
-        val result = auth.signInWithEmailAndPassword(email, password).await()
-        return result.user
-    }
+): ProfileRepository {
 
     // 유저 정보 저장
     override suspend fun saveProfileData(
@@ -71,7 +59,6 @@ class FirebaseRepositoryImpl @Inject constructor(
             throw Exception("프로필 데이터를 불러오지 못했습니다.")
         }
     }
-
 
     // 현재 유저 가져오기 (필요할 때만 호출)
     private fun getCurrentUser(): FirebaseUser? {

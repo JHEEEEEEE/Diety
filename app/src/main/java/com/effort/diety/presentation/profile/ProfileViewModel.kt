@@ -2,7 +2,7 @@ package com.effort.diety.presentation.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.effort.diety.data.repository.FirebaseRepository
+import com.effort.diety.data.repository.ProfileRepository
 import com.effort.diety.presentation.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val firebaseRepository: FirebaseRepository
+    private val profileRepository: ProfileRepository
 ) : ViewModel() {
 
     private val _profileState = MutableStateFlow<UiState<Triple<String, String, String>>>(UiState.Empty)
@@ -31,7 +31,7 @@ class ProfileViewModel @Inject constructor(
             _profileState.value = UiState.Loading
 
             try {
-                val profileData = firebaseRepository.loadProfileData()
+                val profileData = profileRepository.loadProfileData()
                 _profileState.value = UiState.Success(profileData)
             } catch (e: Exception) {
                 _profileState.value = UiState.Error(e)
@@ -45,7 +45,7 @@ class ProfileViewModel @Inject constructor(
             _saveState.value = UiState.Loading
 
             try {
-                val result = firebaseRepository.saveProfileData(name, age, height)
+                val result = profileRepository.saveProfileData(name, age, height)
                 _saveState.value = UiState.Success(result)
             } catch (e: Exception) {
                 _saveState.value = UiState.Error(e)
