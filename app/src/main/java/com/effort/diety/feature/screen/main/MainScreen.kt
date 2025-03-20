@@ -15,15 +15,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.effort.diety.feature.screen.navigation.MainNavigation
 import com.effort.diety.feature.model.NavigationTab
 import com.effort.diety.feature.screen.diet.DietScreen
 import com.effort.diety.feature.screen.home.HomeScreen
 import com.effort.diety.feature.screen.profile.ProfileScreen
+import com.effort.diety.presentation.diet.DietViewModel
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    dietViewModel: DietViewModel = hiltViewModel()
+) {
     var currentScreen by remember { mutableStateOf(NavigationTab.Home) }
+
+    dietViewModel.loadExerciseData()
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
