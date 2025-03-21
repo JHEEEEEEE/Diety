@@ -37,7 +37,8 @@
 
 | Category           | Technologies                                          |
 |--------------------|-------------------------------------------------------|
-| **Architecture**    | MVVM, Clean Architecture, Hilt, Coroutine            |
+| **Architecture**    | MVVM, Clean Architecture, Coroutine                   |
+| **DI**              | Dagger-Hilt                                          |
 | **UI Framework**    | Jetpack Compose                                      |
 | **State Management**| StateFlow, UiState                                   |
 | **Database**        | Firebase Firestore                                   |
