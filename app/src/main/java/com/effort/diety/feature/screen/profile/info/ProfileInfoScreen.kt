@@ -18,11 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.effort.diety.R
 import com.effort.diety.feature.screen.common.CustomGradientButton
+import com.effort.diety.ui.theme.Blue
+import com.effort.diety.ui.theme.Teal
 
 @Composable
 fun ProfileInfoScreen(
@@ -45,7 +48,7 @@ fun ProfileInfoScreen(
         ) {
 
             Text(
-                text = "프로필",
+                text = stringResource(R.string.profile),
                 color = Color.White,
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
@@ -55,7 +58,7 @@ fun ProfileInfoScreen(
 
             Image(
                 painter = painterResource(id = R.drawable.user_img),
-                contentDescription = "Profile Image",
+                contentDescription = stringResource(R.string.profile_image_label),
                 modifier = Modifier
                     .size(100.dp)
                     .clip(shape = RoundedCornerShape(50))
@@ -63,9 +66,9 @@ fun ProfileInfoScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            ProfileInfo(label = "이름", value = name)
-            ProfileInfo(label = "나이", value = "$age 세")
-            ProfileInfo(label = "키", value = "$height cm")
+            ProfileInfo(label = stringResource(R.string.person_name), value = name)
+            ProfileInfo(label = stringResource(R.string.person_age), value = "$age 세")
+            ProfileInfo(label = stringResource(R.string.person_height), value = "$height cm")
 
         }
 
@@ -76,9 +79,9 @@ fun ProfileInfoScreen(
             contentAlignment = Alignment.BottomCenter
         ) {
             CustomGradientButton(
-                text = "수정하기",
+                text = stringResource(R.string.edit),
                 onClick = { onEditClicked() },
-                gradientColors = listOf(Color(0xFF00BFA5), Color(0xFF00B8D4)),
+                gradientColors = listOf(Teal, Blue),
                 modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
             )
         }

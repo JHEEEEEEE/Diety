@@ -11,6 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.effort.diety.R
 import com.effort.diety.feature.model.ProfileDetailScreen.*
 import com.effort.diety.feature.screen.profile.edit.ProfileEditScreen
 import com.effort.diety.feature.screen.profile.info.ProfileInfoScreen
@@ -38,13 +39,13 @@ fun ProfileScreen(
                     profileState as UiState.Success
                     ).data
 
-            name =  loadedName
+            name = loadedName
             age = loadedAge
             height = loadedHeight
-        } else  {
-            val defaultName = "Unknown Name"
-            val defaultAge = "Unknown Age"
-            val defaultHeight = "Unknown Height"
+        } else {
+            val defaultName = context.getString(R.string.unknown_name)
+            val defaultAge = context.getString(R.string.unknown_age)
+            val defaultHeight = context.getString(R.string.unknown_height)
 
             name = defaultName
             age = defaultAge
@@ -55,12 +56,15 @@ fun ProfileScreen(
     LaunchedEffect(saveState) {
         when (saveState) {
             is UiState.Success -> {
-                Toast.makeText(context, "프로필 저장 성공!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    context.getString(R.string.profile_save_success_message), Toast.LENGTH_SHORT).show()
                 currentScreen = ProfileInfo
             }
 
             is UiState.Error -> {
-                val errorMessage = (saveState as UiState.Error).exception.message ?: "프로필 저장 실패"
+                val errorMessage = (saveState as UiState.Error).exception.message ?: context.getString(
+                    R.string.profile_save_failure_message
+                )
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
 
@@ -87,7 +91,6 @@ fun ProfileScreen(
                 age = newAge
                 height = newHeight
 
-                // 저장하기
                 profileViewModel.saveProfile(name, age, height)
 
                 currentScreen = ProfileInfo

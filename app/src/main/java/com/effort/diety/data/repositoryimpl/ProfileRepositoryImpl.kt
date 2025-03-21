@@ -10,9 +10,8 @@ import javax.inject.Inject
 class ProfileRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore
-): ProfileRepository {
+) : ProfileRepository {
 
-    // 유저 정보 저장
     override suspend fun saveProfileData(
         name: String,
         age: String,

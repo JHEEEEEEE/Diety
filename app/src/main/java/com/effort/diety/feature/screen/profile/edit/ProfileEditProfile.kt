@@ -22,10 +22,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.effort.diety.R
 import com.effort.diety.feature.screen.common.CustomGradientButton
+import com.effort.diety.ui.theme.PurpleDark
+import com.effort.diety.ui.theme.PurpleLight
 
 @Composable
 fun ProfileEditScreen(
@@ -54,7 +58,7 @@ fun ProfileEditScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "프로필 수정",
+                text = stringResource(R.string.edit_profile_button_label),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -62,14 +66,14 @@ fun ProfileEditScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            ProfileEditField(label = "이름", value = name, onValueChange = { name = it })
-            ProfileEditField(label = "나이", value = age, onValueChange = { age = it })
-            ProfileEditField(label = "키", value = height, onValueChange = { height = it })
+            ProfileEditField(label = stringResource(R.string.person_name), value = name, onValueChange = { name = it })
+            ProfileEditField(label = stringResource(R.string.person_age), value = age, onValueChange = { age = it })
+            ProfileEditField(label = stringResource(R.string.person_height), value = height, onValueChange = { height = it })
 
             Spacer(modifier = Modifier.height(20.dp))
 
             CustomGradientButton(
-                text = "취소",
+                text = stringResource(R.string.cancel_button_label),
                 onClick = { onCancelClicked() },
                 gradientColors = listOf(Color.Gray, Color.DarkGray)
 
@@ -78,20 +82,21 @@ fun ProfileEditScreen(
             Spacer(modifier = Modifier.height(20.dp))
 
             CustomGradientButton(
-                text = "저장",
+                text = stringResource(R.string.save_button_label),
                 onClick = {
 
                     if (name.isNotBlank() && age.all { it.isDigit() } && height.all { it.isDigit() }) {
 
-                    onSaveClicked(name, age, height)
+                        onSaveClicked(name, age, height)
 
                     } else {
-                        Toast.makeText(context,
-                            "이름은 문자열, 나이와 키는 숫자여야 합니다."
-                        ,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.hint_regiter_personal_info), Toast.LENGTH_SHORT
+                        ).show()
                     }
                 },
-                gradientColors = listOf(Color(0xFF6A1B9A), Color(0XFFAB47BC))
+                gradientColors = listOf(PurpleDark, PurpleLight)
             )
         }
     }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -21,10 +22,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.effort.diety.R
 import com.effort.diety.feature.diet.DietRecordInfoActivity
+import com.effort.diety.ui.theme.DarkBlue
+import com.effort.diety.ui.theme.GreenishTeal
+import com.effort.diety.ui.theme.Purple
 
 @Composable
 fun DietListScreen(
@@ -53,7 +59,7 @@ fun DietListScreen(
 
             // 제목
             AnimatedText(
-                text = "Diet Records",
+                text = stringResource(R.string.diet_records_label),
                 color = Color.Blue,
                 fontSize = 24.sp
             )
@@ -102,13 +108,20 @@ fun DietExerciseList(exerciseRecordState: UiState<List<Exercise>>) {
     LazyColumn {
         when (exerciseRecordState) {
             is UiState.Loading -> {
-                item { Text("Loading...", color = Color.White) }
+                item {
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator(color = Color.White)
+                    }
+                }
             }
 
             is UiState.Success -> {
                 val exerciseList = exerciseRecordState.data
                 if (exerciseList.isEmpty()) {
-                    item { Text("운동 데이터가 없습니다.", color = Color.Gray) }
+                    item { Text(stringResource(R.string.no_exercise_data_available_message), color = Color.Gray, fontSize = 20.sp) }
                 } else {
                     items(exerciseList) { exercise ->
                         ExerciseRow(exercise = exercise)
@@ -117,12 +130,17 @@ fun DietExerciseList(exerciseRecordState: UiState<List<Exercise>>) {
             }
 
             is UiState.Error -> {
-                val errorMessage = exerciseRecordState.exception.message ?: "데이터를 불러오지 못했습니다."
-                item { Text(errorMessage, color = Color.Red) }
+                item {
+                    Text(
+                        text = exerciseRecordState.exception.message ?: stringResource(R.string.data_loading_failure_message),
+                        color = Color.Red,
+                        fontSize = 20.sp
+                    )
+                }
             }
 
             is UiState.Empty -> {
-                item { Text("운동 데이터가 없습니다.", color = Color.Gray) }
+                item { Text(stringResource(R.string.no_exercise_data_available_message), color = Color.Gray, fontSize = 20.sp) }
             }
         }
     }
@@ -137,15 +155,18 @@ fun ExerciseRow(exercise: Exercise) {
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth()
-            .background(Color(0xFF500371), shape = RoundedCornerShape(10.dp))
+            .background(Purple, shape = RoundedCornerShape(10.dp))
             .clip(RoundedCornerShape(10.dp))
             .clickable {
                 val intent = Intent(context, DietRecordInfoActivity::class.java)
 
-                intent.putExtra("docId", exercise.docId)
-                intent.putExtra("name", exercise.name)
-                intent.putExtra("duration", exercise.duration.toString())
-                intent.putExtra("calories", exercise.calories.toString())
+                with(intent) {
+
+                    putExtra("docId", exercise.docId)
+                    putExtra("name", exercise.name)
+                    putExtra("duration", exercise.duration.toString())
+                    putExtra("calories", exercise.calories.toString())
+                }
 
                 context.startActivity(intent)
             }
@@ -156,20 +177,20 @@ fun ExerciseRow(exercise: Exercise) {
         Column {
             Text(
                 text = exercise.name,
-                color = Color(0xFF00BFAE),
+                color = GreenishTeal,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
 
             Text(
-                text = "${exercise.duration} 분",
-                color = Color(0xFF007DBF)
+                text = stringResource(R.string.exercise_time_duration_label, exercise.duration),
+                color = DarkBlue
             )
         }
 
         Text(
-            text = "${exercise.calories} kcal",
-            color = Color(0xFF00BFAE),
+            text = stringResource(R.string.calories_kcal, exercise.calories),
+            color = GreenishTeal,
         )
     }
 }
@@ -190,7 +211,7 @@ fun FloatingAddButton(onAddClicked: () -> Unit) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "+",
+                text = stringResource(R.string.plus_button_label),
                 fontSize = 30.sp,
                 color = Color.Black
             )

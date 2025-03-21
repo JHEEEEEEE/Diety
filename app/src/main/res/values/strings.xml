@@ -1,3 +1,72 @@
 <resources>
+
+    <!-- 앱 관련 기본 정보 -->
     <string name="app_name">Diety</string>
+    <string name="app_logo">Logo</string>
+
+    <!-- 로그인/회원가입 관련 -->
+    <string name="login">LogIn</string>
+    <string name="signup">SignUp</string>
+
+    <string name="login_failure_message">로그인 실패</string>
+    <string name="signup_failure_message">회원가입 실패</string>
+    <string name="login_input_hint_message">Please Enter Email Or Password</string>
+
+    <string name="password_visibility_toggle_button">Toggle Password Visibility</string>
+
+    <!-- 운동 관련 -->
+    <string name="exercise_data_title">Exercise Data</string>
+    <string name="exercise_name">운동명 : %1$s</string>
+    <string name="exercise_duration">운동시간 : %1$s</string>
+    <string name="exercise_burned_calories">소모 칼로리 : %1$s</string>
+    <string name="exercise_time_duration_label">%1$s 분</string>
+    <string name="calories_kcal">%1$s kcal</string>
+
+    <!-- 버튼/레이블 -->
+    <string name="delete_button_label">삭제하기</string>
+    <string name="exit_button_label">나가기</string>
+    <string name="diet_records_label">Diet Records</string>
+    <string name="no_exercise_data_available_message">운동 데이터가 없습니다.</string>
+    <string name="data_loading_failure_message">데이터를 불러오지 못했습니다.</string>
+    <string name="plus_button_label">+</string>
+
+    <!-- 입력값 관련 메시지 -->
+    <string name="invalid_input_message">입력값을 확인해주세요</string>
+    <string name="cancel_button_label">취소</string>
+    <string name="save_button_label">저장</string>
+
+    <!-- 운동 기록 입력 -->
+    <string name="exercise_type_label">운동 종류</string>
+    <string name="calorie_label">칼로리</string>
+    <string name="exercise_duration_label">시간</string>
+
+    <!-- 프로필 관련 -->
+    <string name="edit_profile_button_label">프로필 수정</string>
+    <string name="person_name">이름</string>
+    <string name="person_age">나이</string>
+    <string name="person_height">키</string>
+    <string name="hint_regiter_personal_info">이름은 문자열, 나이와 키는 숫자여야 합니다.</string>
+    <string name="edit">수정하기</string>
+    <string name="profile">프로필</string>
+    <string name="profile_image_label">Profile Image</string>
+
+    <string name="unknown_name">Unknown Name</string>
+    <string name="unknown_age">Unknown Age</string>
+    <string name="unknown_height">Unknown Height</string>
+
+    <string name="profile_save_success_message">프로필 저장 성공!</string>
+    <string name="profile_save_failure_message">프로필 저장 실패</string>
+
+    <!-- 문서/데이터 관련 -->
+    <string name="docid">docId</string>
+    <string name="name">name</string>
+    <string name="duration">duration</string>
+    <string name="calories">calories</string>
+
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="diet_record_input_title">Diet Record Input</string>
+
 </resources>

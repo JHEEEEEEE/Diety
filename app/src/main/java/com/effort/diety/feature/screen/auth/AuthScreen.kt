@@ -5,13 +5,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -40,7 +39,11 @@ fun AuthUi(
     authViewModel: AuthViewModel = hiltViewModel(),
     startMainActivity: () -> Unit,
 ) {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.Black),
+    ) {
 
         val signUpState by authViewModel.signUpState.collectAsStateWithLifecycle()
         val signInState by authViewModel.signInState.collectAsStateWithLifecycle()
@@ -50,8 +53,7 @@ fun AuthUi(
                 startMainActivity()
             }
         }
-        AuthContent(
-            paddingValues = innerPadding,
+        AuthForm(
             signUpState = signUpState,
             signInState = signInState,
             onLogIn = { email, password ->
@@ -60,23 +62,6 @@ fun AuthUi(
             onSignUp = { email, password ->
                 authViewModel.signUp(email, password)
             }
-        )
-    }
-}
-
-@Composable
-fun AuthContent(
-    paddingValues: PaddingValues,
-    signUpState: UiState<Unit>,
-    signInState: UiState<Unit>,
-    onLogIn: (String, String) -> Unit,
-    onSignUp: (String, String) -> Unit,
-) {
-    Box(
-        modifier = Modifier.padding(paddingValues)
-    ) {
-        AuthForm(
-            signUpState, signInState, onLogIn, onSignUp
         )
     }
 }
@@ -95,13 +80,12 @@ fun AuthForm(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.Black)
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
             painter = painterResource(id = R.drawable.logo),
-            contentDescription = "Logo",
+            contentDescription = stringResource(R.string.app_logo),
             modifier = Modifier
                 .padding(top = 100.dp, bottom = 32.dp)
                 .size(200.dp)
@@ -111,37 +95,41 @@ fun AuthForm(
         CustomTextField(
             value = email,
             onValueChange = { email = it },
-            placeholder = "Email"
+            placeholder = stringResource(R.string.email)
         )
 
         CustomTextField(
             value = password,
             onValueChange = { password = it },
-            placeholder = "Password",
+            placeholder = stringResource(R.string.password),
             isPassword = true
         )
 
         when (signUpState) {
             is UiState.Error -> {
                 Text(
-                    text = signUpState.exception.message ?: "회원가입 실패",
+                    text = signUpState.exception.message
+                        ?: stringResource(R.string.signup_failure_message),
                     color = Color.Red,
                     modifier = Modifier.padding(10.dp),
                     fontSize = 16.sp
                 )
             }
+
             else -> {}
         }
 
         when (signInState) {
             is UiState.Error -> {
                 Text(
-                    text = signInState.exception.message ?: "로그인 실패",
+                    text = signInState.exception.message
+                        ?: stringResource(R.string.login_failure_message),
                     color = Color.Red,
                     modifier = Modifier.padding(10.dp),
                     fontSize = 16.sp
                 )
             }
+
             else -> {}
         }
 
@@ -153,10 +141,13 @@ fun AuthForm(
         }
 
         CustomButton(
-            text = "LogIn",
+            text = stringResource(R.string.login),
             onClick = {
                 if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(context, "Please Enter Email Or Password", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.login_input_hint_message), Toast.LENGTH_SHORT
+                    )
                         .show()
                 } else {
                     onLogIn(email, password)
@@ -168,10 +159,10 @@ fun AuthForm(
         )
 
         CustomButton(
-            text = "SignUp",
+            text = stringResource(R.string.signup),
             onClick = {
                 if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(context, "Please Enter Email Or Password", Toast.LENGTH_SHORT)
+                    Toast.makeText(context, R.string.login_input_hint_message, Toast.LENGTH_SHORT)
                         .show()
                 } else {
                     onSignUp(email, password)

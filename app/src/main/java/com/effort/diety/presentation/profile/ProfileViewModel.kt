@@ -15,7 +15,8 @@ class ProfileViewModel @Inject constructor(
     private val profileRepository: ProfileRepository
 ) : ViewModel() {
 
-    private val _profileState = MutableStateFlow<UiState<Triple<String, String, String>>>(UiState.Empty)
+    private val _profileState =
+        MutableStateFlow<UiState<Triple<String, String, String>>>(UiState.Empty)
     val profileState get() = _profileState.asStateFlow()
 
     private val _saveState = MutableStateFlow<UiState<Boolean>>(UiState.Empty)

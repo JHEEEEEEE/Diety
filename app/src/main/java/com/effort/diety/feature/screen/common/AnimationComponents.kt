@@ -22,12 +22,67 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
+import com.effort.diety.R
 import kotlinx.coroutines.delay
+
+@Composable
+fun ShiningText() {
+
+    var isShining by remember { mutableStateOf(true) }
+
+    LaunchedEffect(Unit) {
+        delay(2000)
+        isShining = false
+    }
+
+    val infiniteTransition = rememberInfiniteTransition(label = "")
+    val transAnim = infiniteTransition.animateFloat(
+        initialValue = -1000f,
+        targetValue = 1000f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 2000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = ""
+    )
+
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.Center
+    ) {
+        if (isShining) {
+            Text(
+                text = stringResource(R.string.exercise_data_title),
+                style = TextStyle(
+                    fontSize = 48.sp,
+                    fontWeight = FontWeight.Bold,
+                    brush = Brush.linearGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.White.copy(alpha = 0.8f),
+                            Color.Transparent
+                        ),
+                        start = Offset(transAnim.value, 0f),
+                        end = Offset(transAnim.value + 500f, 0f)
+                    )
+                )
+            )
+        } else {
+            Text(
+                text = stringResource(R.string.exercise_data_title),
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+        }
+    }
+}
 
 @Composable
 fun AnimatedText(text: String, color: Color, fontSize: TextUnit) {
@@ -78,57 +133,4 @@ fun AnimatedCircularProgressBar(
         fontSize = 20.sp,
         fontWeight = FontWeight.Bold
     )
-}
-
-@Composable
-fun ShiningText() {
-
-    var isShining by remember { mutableStateOf(true) }
-
-    LaunchedEffect(Unit) {
-        delay(2000)
-        isShining = false
-    }
-
-    val infiniteTransition = rememberInfiniteTransition(label = "")
-    val transAnim = infiniteTransition.animateFloat(
-        initialValue = -1000f,
-        targetValue = 1000f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 2000, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
-        ),
-        label = ""
-    )
-
-    Box(
-        modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center
-    ) {
-        if (isShining) {
-            Text(
-                text = "Exercise Data",
-                style = TextStyle(
-                    fontSize = 48.sp,
-                    fontWeight = FontWeight.Bold,
-                    brush = Brush.linearGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.White.copy(alpha = 0.8f),
-                            Color.Transparent
-                        ),
-                        start = Offset(transAnim.value, 0f),
-                        end = Offset(transAnim.value + 500f, 0f)
-                    )
-                )
-            )
-        } else {
-            Text(
-                text = "Exercise Data",
-                fontSize = 48.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
-        }
-    }
 }

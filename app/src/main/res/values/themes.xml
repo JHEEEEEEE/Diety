@@ -4,10 +4,19 @@
     <style name="Theme.Diety" parent="android:Theme.Material.Light.NoActionBar" />
 
     <style name="Theme.Diety.SplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground"> @color/white </item>
+        <item name="windowSplashScreenBackground"> @color/black </item>
         <item name="windowSplashScreenAnimatedIcon"> @drawable/logo </item>
         <item name="windowSplashScreenAnimationDuration"> 2000 </item>
         <item name="android:windowNoTitle"> true </item>
+        <!-- 상태 바를 투명하게 설정 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!-- 내비게이션 바를 투명하게 설정 -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- 상태 바와 내비게이션 바 영역을 확장하도록 설정 -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
 </resources>
