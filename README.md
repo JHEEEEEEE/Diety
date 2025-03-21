@@ -37,7 +37,7 @@
 
 | Category           | Technologies                                          |
 |--------------------|-------------------------------------------------------|
-| **Architecture**    | MVVM, Clean Architecture, Coroutine                   |
+| **Architecture**    | MVVM, Clean Architecture                             |
 | **DI**              | Dagger-Hilt                                          |
 | **UI Framework**    | Jetpack Compose                                      |
 | **State Management**| StateFlow, UiState                                   |
