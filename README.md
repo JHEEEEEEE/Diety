@@ -81,3 +81,21 @@
 
 ### **4. 프로필 화면**:
 - 사용자는 자신의 프로필을 확인하고 수정. 수정된 정보는 실시간으로 Firebase에 저장
+
+📌 **캡처 GIF**:  
+
+| **시작화면** | **로그인 화면** |
+|----------------------------------|----------------------------------|
+| ![diety_splash](https://github.com/user-attachments/assets/e0963901-58ac-4cb4-93d0-46c1504e1843)|![diety_login](https://github.com/user-attachments/assets/887b17ea-db5c-4c30-80b6-913a45365b45)|
+
+| **Diet 기록 남기는 화면(Diet Screen)** |
+|----------------------------------|
+| ![diety_record](https://github.com/user-attachments/assets/51f3caff-621c-486a-80cc-c93ea8c0daf6) |
+
+| **Diet 기록에 따른 애니메이션 출력(Home Screen)** |
+|----------------------------------|
+| ![diety_home](https://github.com/user-attachments/assets/6f2968ec-57b5-4874-9824-7f78b6c4dc9a) |
+
+| **프로필 수정(EditProfile Screen)** |
+|----------------------------------|
+ | ![diety_editprofile](https://github.com/user-attachments/assets/b6e53803-c8d8-4da5-a932-3d14316673c8)|
