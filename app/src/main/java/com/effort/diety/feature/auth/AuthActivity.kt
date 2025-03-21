@@ -20,6 +20,7 @@ class AuthActivity : ComponentActivity() {
         installSplashScreen()
 
         enableEdgeToEdge()
+
         setContent {
             DietyTheme {
                 AuthUi(startMainActivity = { startMainActivity() })
@@ -33,4 +34,3 @@ class AuthActivity : ComponentActivity() {
         finish()
     }
 }
-

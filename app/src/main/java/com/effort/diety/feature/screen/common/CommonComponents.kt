@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -38,6 +39,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.effort.diety.R
 
 @Composable
 fun CustomTextField(
@@ -85,7 +87,7 @@ fun CustomTextField(
                         ) {
                             Icon(
                                 imageVector = if (passwordVisible) Icons.Default.Close else Icons.Default.Check,
-                                contentDescription = "Toggle Password Visibility"
+                                contentDescription = stringResource(R.string.password_visibility_toggle_button)
                             )
                         }
                     }
@@ -155,10 +157,10 @@ fun CircularProgressBar(
     modifier: Modifier,
     strokeWidth: Dp,
     color: Color = Color.Blue,
-    backgroundColor : Color = Color.LightGray
+    backgroundColor: Color = Color.LightGray
 ) {
 
-    Canvas(modifier = modifier){
+    Canvas(modifier = modifier) {
 
         val size = size.minDimension
         val radius = size / 2f

@@ -8,16 +8,13 @@ import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
-): AuthRepository {
+) : AuthRepository {
 
-
-    // 회원가입
     override suspend fun signUp(email: String, password: String): FirebaseUser? {
         val result = auth.createUserWithEmailAndPassword(email, password).await()
         return result.user
     }
 
-    // 로그인
     override suspend fun signIn(email: String, password: String): FirebaseUser? {
         val result = auth.signInWithEmailAndPassword(email, password).await()
         return result.user

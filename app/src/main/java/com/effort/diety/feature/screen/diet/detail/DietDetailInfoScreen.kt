@@ -13,15 +13,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.effort.diety.R
 import com.effort.diety.feature.diet.DietRecordInfoActivity
 import com.effort.diety.feature.screen.common.AnimatedText
 import com.effort.diety.feature.screen.common.CustomGradientButton
 import com.effort.diety.presentation.UiState
 import com.effort.diety.presentation.diet.DietViewModel
+import com.effort.diety.ui.theme.PurpleDark
+import com.effort.diety.ui.theme.PurpleLight
 
 @Composable
 fun DietDetailInfo(
@@ -48,7 +52,7 @@ fun DietDetailInfo(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color.Black)
-            .padding(20.dp)
+            .padding(30.dp)
     ) {
 
         AnimatedText(
@@ -60,21 +64,21 @@ fun DietDetailInfo(
         Spacer(modifier = Modifier.size(20.dp))
 
         Text(
-            text = "운동명 : $name",
+            text = stringResource(R.string.exercise_name, name),
             color = Color.White,
             fontSize = 20.sp,
             modifier = Modifier.padding(10.dp)
         )
 
         Text(
-            text = "운동시간 : $duration",
+            text = stringResource(R.string.exercise_duration, duration),
             color = Color.White,
             fontSize = 20.sp,
             modifier = Modifier.padding(10.dp)
         )
 
         Text(
-            text = "소모 칼로리 : $calories",
+            text = stringResource(R.string.exercise_burned_calories, calories),
             color = Color.White,
             fontSize = 20.sp,
             modifier = Modifier.padding(10.dp)
@@ -83,18 +87,18 @@ fun DietDetailInfo(
         Spacer(modifier = Modifier.size(20.dp))
 
         CustomGradientButton(
-            text = "삭제하기",
+            text = stringResource(R.string.delete_button_label),
             onClick = {
                 dietViewModel.removeExerciseData(docId)
                 activity.finish()
             },
-            gradientColors = listOf(Color(0xFF6A1B9A), Color(0xFFAB47BC))
+            gradientColors = listOf(PurpleDark, PurpleLight)
         )
 
         Spacer(modifier = Modifier.size(20.dp))
 
         CustomGradientButton(
-            text = "나가기",
+            text = stringResource(R.string.exit_button_label),
             onClick = {
                 activity.finish()
             },

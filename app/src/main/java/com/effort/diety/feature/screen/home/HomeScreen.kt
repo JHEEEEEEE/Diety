@@ -23,11 +23,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.effort.diety.R
 import com.effort.diety.feature.model.Exercise
 import com.effort.diety.feature.screen.common.AnimatedText
 import com.effort.diety.feature.screen.common.ShiningText
@@ -57,7 +59,7 @@ fun HomeScreen(
             AnimatedExerciseGraph(exerciseList)
         } else {
             Text(
-                text = "No exercise data available",
+                text = stringResource(R.string.no_exercise_data_available_message),
                 color = Color.Gray,
                 fontSize = 20.sp
             )
@@ -145,13 +147,13 @@ fun AnimatedExerciseGraph(exerciseList: List<Exercise>) {
 
         Column {
             AnimatedText(
-                text = "Duration",
+                text = stringResource(R.string.duration),
                 color = Color.Blue,
                 fontSize = 24.sp
             )
 
             AnimatedText(
-                text = "Calories",
+                text = stringResource(R.string.calories),
                 color = Color.Red,
                 fontSize = 24.sp
             )
