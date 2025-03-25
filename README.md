@@ -33,7 +33,7 @@
 
 | Category           | Technologies                                          |
 |--------------------|-------------------------------------------------------|
-| **Architecture**    | MVVM, Clean Architecture                             |
+| **Architecture**    | MVVM, Google App Architecture                        |
 | **DI**              | Dagger-Hilt                                          |
 | **UI Framework**    | Jetpack Compose                                      |
 | **State Management**| StateFlow, UiState                                   |
@@ -42,7 +42,7 @@
 | **Networking**      | Firebase (for storing user data)                     |
 | **APIs**            | Firebase Auth, Firebase Firestore                    |
 | **Design**          | Material3, Custom Animations                         |
-| **Concurrency**     | Coroutines (suspend functions)                       |
+| **Concurrency**     | Coroutines                                           |
 
 ---
 
@@ -82,8 +82,8 @@
 
 | **시작화면** | **로그인 화면** |
 |----------------------------------|----------------------------------|
-| ![diety_splash](https://github.com/user-attachments/assets/e0963901-58ac-4cb4-93d0-46c1504e1843)|![diety_login](https://github.com/user-attachments/assets/887b17ea-db5c-4c30-80b6-913a45365b45)|
+| ![Diety_Splash](https://github.com/user-attachments/assets/5d3fee8a-e9b1-4889-99ea-2ca4cda9156a) | ![Diety_LogIn](https://github.com/user-attachments/assets/5382fdfb-dcda-4599-851e-eba7e9cc610a) |
 
-| **Diet 기록 남기는 화면(Diet Screen)** | **Diet 기록에 따른 애니메이션 출력<br/>(Home Screen)** | **프로필 수정(EditProfile Screen)** |
+| **Diet 기록 남기는 화면(Diet Screen)** | **프로필 수정(EditProfile Screen)** | **Diet 기록 각 Tab별 애니메이션 출력** |
 |----------------------------------|----------------------------------|----------------------------------|
-| ![diety_record](https://github.com/user-attachments/assets/51f3caff-621c-486a-80cc-c93ea8c0daf6) | ![diety_home](https://github.com/user-attachments/assets/6f2968ec-57b5-4874-9824-7f78b6c4dc9a) | ![diety_editprofile](https://github.com/user-attachments/assets/b6e53803-c8d8-4da5-a932-3d14316673c8)|
+| ![Diety_Record](https://github.com/user-attachments/assets/5c5a6de2-854b-4579-93b0-8887bcede93a)| ![Diety_EditProfile](https://github.com/user-attachments/assets/1c0abe05-2be8-42ba-a487-e2dc3e254a0d) | ![Diety_Animation](https://github.com/user-attachments/assets/daf75574-e45c-401e-907b-33cde08ffdf9)|
